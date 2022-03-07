@@ -27,7 +27,7 @@ def write_docx_multipage(document, name, train):
     page_1 = {
         'text_field': name,
         'num_train': train,
-        'date': f'{date.today()}'}
+        'date': '{:%d-%b-%Y}'.format(date.today())}
     page_2 = {
         'text_field': name,
         'num_train': train,
@@ -42,6 +42,7 @@ def write_docx_multipage(document, name, train):
 
 if __name__ == '__main__':
     document = MailMerge(template)
+    document2 = MailMerge(template)
     print(document.get_merge_fields())
     write_docx(document, 'Александров Д.В.', '001A')
-    write_docx_multipage(document, 'Александров Д.В.', '001A')
+    write_docx_multipage(document2, 'Александров Д.В.', '0A')
